@@ -6,7 +6,7 @@
 /*   By: natallia <natallia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/13 13:40:59 by natallia          #+#    #+#             */
-/*   Updated: 2024/12/15 21:20:56 by natallia         ###   ########.fr       */
+/*   Updated: 2026/04/26 12:44:30 by natallia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,6 @@ void	generate_array(t_map *map)
 		free(temp);
 		if (long_temp == NULL)
 			error_exit("Map array: ", ERR_MALLOC, map);
-		map->y++;
 	}
 	close(fd);
 	map->array = ft_split(long_temp, '\n');
@@ -56,6 +55,8 @@ void	generate_array(t_map *map)
 	free(long_temp);
 	if (map->array == NULL || map->copy == NULL)
 		error_exit("Map array: ", ERR_MALLOC, map);
+	while (map->array[map->y])
+		map->y++;
 }
 
 void	get_player_position(t_map *map)

@@ -33,7 +33,9 @@ int	close_game(t_map *map)
 
 void	you_win(t_map *map)
 {
+	map->won = 1;
 	map->moves++;
+	print_moves(map);
 	mlx_clear_window(map->mlx, map->wnd);
 	mlx_string_put(map->mlx, map->wnd,
 		(map->x / 2) * IMG_PXL, (map->y / 2) * IMG_PXL,0xFFFA9E, "YOU WON!");
@@ -41,6 +43,8 @@ void	you_win(t_map *map)
 
 int	key_hook(int keycode, t_map *map)
 {
+	if (map->won)
+		return (0);
 	if (keycode == ESC)
 		return (close_game(map));
 	else if (keycode == RIGHT)
@@ -60,9 +64,9 @@ void	print_moves(t_map *map)
 
 	move = ft_itoa(map->moves);
 	write(1, "\r", 1);
-	write(1, "\x1b[33;01m", 9);
+	write(1, "\x1b[33;01m", 8);
 	write(1, move, ft_strlen(move));
-	write(1, "\x1b[0m", 5);
-	write(1, " movements", 11);
+	write(1, "\x1b[0m", 4);
+	write(1, " movements", 10);
 	free(move);
 }

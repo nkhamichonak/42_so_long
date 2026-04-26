@@ -6,7 +6,7 @@
 /*   By: natallia <natallia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/12 16:53:11 by natallia          #+#    #+#             */
-/*   Updated: 2024/12/15 21:20:10 by natallia         ###   ########.fr       */
+/*   Updated: 2026/04/26 12:44:30 by natallia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ int	main(int argc, char **argv)
 {
 	t_map	map;
 
+	ft_memset(&map, 0, sizeof(t_map));
 	if (argc != 2)
 		error_exit("Input: ", ERR_ARG, &map);
 	initialise_map(&map, argv[1]);

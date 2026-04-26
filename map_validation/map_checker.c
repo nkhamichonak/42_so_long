@@ -17,7 +17,7 @@ static void	check_file(t_map *map)
 	size_t	len;
 
 	len = ft_strlen(map->name);
-	if (ft_strcmp(&map->name[len - 4], ".ber"))
+	if (len < 4 || ft_strcmp(&map->name[len - 4], ".ber"))
 		error_exit("Input: ", ERR_EXT, map);
 }
 

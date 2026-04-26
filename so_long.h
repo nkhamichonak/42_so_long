@@ -14,8 +14,11 @@
 # define SO_LONG_H
 
 # include "libft/libft.h"
-# include "mlx_mac/mlx.h"
-# include "mlx_linux/mlx.h"
+# ifdef __APPLE__
+#  include "mlx_mac/mlx.h"
+# else
+#  include "mlx_linux/mlx.h"
+# endif
 # include <fcntl.h>
 # include <string.h>
 # include <errno.h>
@@ -59,6 +62,7 @@ typedef struct	s_map
 	int			player_x;
 	int			player_y;
 	int			moves;
+	int			won;
 	void		*mlx;
 	void		*wnd;
 	int			frame;
